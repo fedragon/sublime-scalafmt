@@ -1,6 +1,6 @@
 [
     {
         "caption": "ScaFor: Format current file",
-        "command": "format_scala"
+        "command": "scafor_format_file"
     }
 ]

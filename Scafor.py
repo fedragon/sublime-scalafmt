@@ -5,7 +5,7 @@ import subprocess
 import sys
 import time
 
-class FormatScalaCommand(sublime_plugin.TextCommand):
+class ScaforFormatFileCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         full_path = self.view.file_name()
         _, file_extension = os.path.splitext(full_path)
@@ -16,10 +16,10 @@ class FormatScalaCommand(sublime_plugin.TextCommand):
 
                 try:
                     if not self._start_nailgun():
-                        sublime.error_message('Format Scala: I cannot start Nailgun!')
+                        sublime.error_message('ScaFor: I cannot start Nailgun, quitting.')
                         return 1
                 except:
-                  sublime.error_message('WTF')
+                  sublime.error_message('ScaFor: Something went wrong with Nailgun, quitting.')
                   return 1
             else:
                 print('Nailgun is up and running')
@@ -27,9 +27,13 @@ class FormatScalaCommand(sublime_plugin.TextCommand):
             print('About to format ' + full_path)
             subprocess.call(['ng', 'ng-alias', 'scalafmt', 'org.scalafmt.cli.Cli'])
 
+            config_file = os.path.expanduser("~") + '/.scalafmt.conf'
+
+            subprocess.call(['touch', config_file])
+
             p = subprocess.Popen(\
                 ['ng', 'scalafmt', \
-                 '--config', os.path.expanduser("~") + '/.scalafmt.conf', \
+                 '--config', config_file, \
                  '--non-interactive', \
                  '--stdout', \
                  full_path], \
@@ -72,5 +76,4 @@ class FormatScalaCommand(sublime_plugin.TextCommand):
             subprocess.check_call(['nc', '-vz', 'localhost', '2113'])
             True
         except:
-            print('nailgun is NOT ready')
             False

@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "ScaFor: Format current file",
+        "command": "format_scala"
+    }
+]

@@ -1,4 +1,4 @@
-# Scala Formatter for Sublime 3 (ScaFor)
+# Scala Formatter for Sublime 3
 
 Minimal Sublime Text 3 plugin to format Scala files using [scalafmt](http://scalameta.org/scalafmt).
 
@@ -12,7 +12,7 @@ Running provided `setup.sh` will install for you both Scalafmt and Nailgun.
 
 Clone this repository in `~/Library/Application Support/Sublime Text 3/Packages/`.
 
-## (optional) Step 3: add keybinding
+### Step 3 (optional): add keybinding
 
 Open `Preferences > Key Bindings` and add:
 
@@ -23,9 +23,13 @@ Open `Preferences > Key Bindings` and add:
 
 changing `keys` to any sequence of keys you'd like.
 
+## Usage
+
+Open a Scala file, then open the `Command Palette` and select `ScaFor: Format current file`.
+
 ## Scalafmt configuration
 
-The plugin uses (and creates, if missing) `~/.scalafmt.conf` so that file can be used to change `scalafmt` behaviour.
+The plugin uses (and creates, if missing) `~/.scalafmt.conf` so that file can be used to configure `scalafmt`.
 
 ## Caveats
 

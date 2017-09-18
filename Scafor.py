@@ -31,18 +31,22 @@ class ScaforFormatFileCommand(sublime_plugin.TextCommand):
 
             subprocess.call(['touch', config_file])
 
-            p = subprocess.Popen(\
-                ['ng', 'scalafmt', \
-                 '--config', config_file, \
-                 '--non-interactive', \
-                 '--stdout', \
-                 full_path], \
-                 stdout = subprocess.PIPE,
-                 stderr = subprocess.PIPE).communicate()
+            region = sublime.Region(0, self.view.size())
+            input = self.view.substr(region)
 
-            self.view.replace(\
-                edit, \
-                sublime.Region(0, self.view.size()), \
+            p = subprocess.Popen(
+                ['ng', 'scalafmt',
+                 '--config', config_file,
+                 '--non-interactive',
+                 '--stdin',
+                 full_path],
+                 stdin = subprocess.PIPE,
+                 stdout = subprocess.PIPE,
+                 stderr = subprocess.PIPE).communicate(input.encode('utf-8'))
+
+            self.view.replace(
+                edit,
+                region,
                 p[0].decode())
 
     def _is_nailgun_running(self):

@@ -32,7 +32,7 @@ class ScaforFormatFileCommand(sublime_plugin.TextCommand):
             subprocess.call(['touch', config_file])
 
             region = sublime.Region(0, self.view.size())
-            input = self.view.substr(region)
+            unformatted = self.view.substr(region)
 
             p = subprocess.Popen(
                 ['ng', 'scalafmt',
@@ -42,12 +42,17 @@ class ScaforFormatFileCommand(sublime_plugin.TextCommand):
                  full_path],
                  stdin = subprocess.PIPE,
                  stdout = subprocess.PIPE,
-                 stderr = subprocess.PIPE).communicate(input.encode('utf-8'))
+                 stderr = subprocess.PIPE)
 
-            self.view.replace(
-                edit,
-                region,
-                p[0].decode())
+            formatted = p.communicate(unformatted.encode('utf-8'))[0].decode()
+
+            if not formatted:
+                print('Syntax errors, cannot format')
+            else:
+                self.view.replace(
+                    edit,
+                    region,
+                    formatted)
 
     def _is_nailgun_running(self):
         try:

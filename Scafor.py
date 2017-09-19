@@ -16,10 +16,10 @@ class ScaforFormatFileCommand(sublime_plugin.TextCommand):
 
                 try:
                     if not self._start_nailgun():
-                        sublime.error_message('ScaFor: I cannot start Nailgun, quitting.')
+                        sublime.error_message('ScaFor: I am unable to start Nailgun, quitting.')
                         return 1
                 except:
-                  sublime.error_message('ScaFor: Something went wrong with Nailgun, quitting.')
+                  sublime.error_message('ScaFor: Something went wrong, quitting.')
                   return 1
             else:
                 print('Nailgun is up and running')
@@ -47,7 +47,9 @@ class ScaforFormatFileCommand(sublime_plugin.TextCommand):
             formatted = p.communicate(unformatted.encode('utf-8'))[0].decode()
 
             if not formatted:
-                print('Syntax errors, cannot format')
+                sublime.status_message('ScaFor: syntax errors, cannot format')
+            elif formatted == unformatted:
+                print('Nothing to do')
             else:
                 self.view.replace(
                     edit,

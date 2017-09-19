@@ -1,14 +1,13 @@
-# Scala Formatter for Sublime 3
+# Scala Formatter for Sublime Text 3
 
-Minimal Sublime Text 3 plugin to format Scala files using [Scalafmt](http://[scalameta.org/scalafmt) and [Nailgun](https://github.com/martylamb/nailgun).
+Minimal Sublime Text 3 plugin to format Scala files. Powered by [Scalafmt](http://[scalameta.org/scalafmt) and [Nailgun](https://github.com/martylamb/nailgun).
 
 ## Installation
 
 ### Step 1: Install this plugin
 
-#### ... with Package Control
+#### ... with [Package Control](https://packagecontrol.io/)
 
-If you use [Package Control](https://packagecontrol.io/):
 - open the Command Palette
 - select `Package Control: Install Package`
 - select `ScaFor`
@@ -21,7 +20,7 @@ Clone this repository in `~/Library/Application Support/Sublime Text 3/Packages/
 
 Run provided `setup.sh`, that will install for you both Scalafmt and Nailgun according to [recommended installation instructions](http://scalameta.org/scalafmt/#Installation).
 
-### Step 3 (optional): Add keybinding
+### Optional: Add keybinding
 
 Open `Preferences > Key Bindings` and add:
 
@@ -38,8 +37,8 @@ Open a Scala file, then open the `Command Palette` and select `ScaFor: Format cu
 
 ## Scalafmt configuration
 
-The plugin uses (and creates, if missing) `~/.scalafmt.conf` so that file can be used to configure `scalafmt`.
+The plugin uses (and creates, if missing) `~/.scalafmt.conf`: this file can be used to configure `Scalafmt`.
 
 ## Caveats
 
-Very early stages of development, only tested on OSX El Capitan.
+Very early stages of development, only tested on OSX El Capitan / macOS Sierra.

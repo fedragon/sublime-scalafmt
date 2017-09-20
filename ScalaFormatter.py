@@ -5,7 +5,7 @@ import subprocess
 import sys
 import time
 
-class ScaforFormatFileCommand(sublime_plugin.TextCommand):
+class ScalaFormatterFormatFileCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         full_path = self.view.file_name()
         _, file_extension = os.path.splitext(full_path)
@@ -16,10 +16,10 @@ class ScaforFormatFileCommand(sublime_plugin.TextCommand):
 
                 try:
                     if not self._start_nailgun():
-                        sublime.error_message('ScaFor: I am unable to start Nailgun, quitting.')
+                        sublime.error_message('ScalaFormatter: I am unable to start Nailgun, quitting.')
                         return 1
                 except:
-                  sublime.error_message('ScaFor: Something went wrong, quitting.')
+                  sublime.error_message('ScalaFormatter: Something went wrong with Nailgun, quitting.')
                   return 1
             else:
                 print('Nailgun is up and running')

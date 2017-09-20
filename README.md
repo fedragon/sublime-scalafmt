@@ -26,14 +26,14 @@ Open `Preferences > Key Bindings` and add:
 
     {
       "keys": ["super+alt+l"],
-      "command": "scafor_format_file",
+      "command": "scala_formatter_format_file",
     }
 
 changing `keys` to any sequence of keys you'd like.
 
 ## Usage
 
-Open a Scala file, then open the `Command Palette` and select `ScaFor: Format current file`.
+Open a Scala file, then open the `Command Palette` and select `ScalaFormatter: Format current file`.
 
 ## Scalafmt configuration
 

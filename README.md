@@ -10,7 +10,7 @@ Minimal Sublime Text 3 package to format Scala files. Powered by [Scalafmt](http
 
 - open the Command Palette
 - select `Package Control: Install Package`
-- select `ScaFor`
+- select `ScalaFormatter`
 
 #### ... or manually
 

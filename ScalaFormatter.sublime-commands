@@ -1,6 +1,0 @@
-[
-    {
-        "caption": "ScalaFormatter: Format current file",
-        "command": "scala_formatter_format_file"
-    }
-]

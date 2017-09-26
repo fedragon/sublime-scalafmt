@@ -5,7 +5,7 @@ import subprocess
 import sys
 import time
 
-class ScalaFormatterFormatFileCommand(sublime_plugin.TextCommand):
+class ScalafmtFormatFileCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         full_path = self.view.file_name()
         _, file_extension = os.path.splitext(full_path)
@@ -16,10 +16,10 @@ class ScalaFormatterFormatFileCommand(sublime_plugin.TextCommand):
 
                 try:
                     if not self._start_nailgun():
-                        sublime.error_message('ScalaFormatter: I am unable to start Nailgun, quitting.')
+                        sublime.error_message('Scalafmt: I am unable to start Nailgun, quitting.')
                         return 1
                 except:
-                  sublime.error_message('ScalaFormatter: Something went wrong with Nailgun, quitting.')
+                  sublime.error_message('Scalafmt: Something went wrong with Nailgun, quitting.')
                   return 1
             else:
                 print('Nailgun is up and running')
@@ -47,7 +47,7 @@ class ScalaFormatterFormatFileCommand(sublime_plugin.TextCommand):
             formatted = p.communicate(unformatted.encode('utf-8'))[0].decode()
 
             if not formatted:
-                sublime.status_message('ScaFor: syntax errors, cannot format')
+                sublime.status_message('Scalafmt: syntax errors, cannot format')
             elif formatted == unformatted:
                 print('Nothing to do')
             else:

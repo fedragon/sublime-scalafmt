@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "Scalafmt: Format current file",
+        "command": "scalafmt_format_file"
+    }
+]

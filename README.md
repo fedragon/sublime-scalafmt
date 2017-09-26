@@ -1,6 +1,6 @@
-# Scala Formatter for Sublime Text 3
+# Scalafmt for Sublime Text 3
 
-Minimal Sublime Text 3 package to format Scala files. Powered by [Scalafmt](http://[scalameta.org/scalafmt) and [Nailgun](https://github.com/martylamb/nailgun).
+Minimal Sublime Text 3 package to format Scala files, powered by [Scalafmt](http://[scalameta.org/scalafmt) and [Nailgun](https://github.com/martylamb/nailgun).
 
 ## Installation
 
@@ -10,7 +10,7 @@ Minimal Sublime Text 3 package to format Scala files. Powered by [Scalafmt](http
 
 - open the Command Palette
 - select `Package Control: Install Package`
-- select `ScalaFormatter`
+- select `Scalafmt`
 
 #### ... or manually
 
@@ -26,19 +26,19 @@ Open `Preferences > Key Bindings` and add:
 
     {
       "keys": ["super+alt+l"],
-      "command": "scala_formatter_format_file",
+      "command": "scalafmt_format_file",
     }
 
 changing `keys` to any sequence of keys you'd like.
 
 ## Usage
 
-Open a Scala file, then open the `Command Palette` and select `ScalaFormatter: Format current file`.
+Open a Scala file, then open the `Command Palette` and select `Scalafmt: Format current file`.
 
-## Scalafmt configuration
+## Customize format style
 
-This package uses (and creates, if missing) `~/.scalafmt.conf`: this file can be used to configure `Scalafmt`.
+This package uses (and creates, if missing) `~/.scalafmt.conf`: this file can be used to influence how `scalafmt` formats your code.
 
 ## Caveats
 
-Very early stages of development, only tested on OSX El Capitan / macOS Sierra.
+Early stages of development, only tested on OSX El Capitan / macOS Sierra.

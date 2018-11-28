@@ -44,17 +44,23 @@ class ScalafmtFormatFileCommand(sublime_plugin.TextCommand):
                  stdout = subprocess.PIPE,
                  stderr = subprocess.PIPE)
 
-            formatted = p.communicate(unformatted.encode('utf-8'))[0].decode()
+            outs, errs = p.communicate(unformatted.encode('utf-8'))
 
-            if not formatted:
-                sublime.status_message('Scalafmt: syntax errors, cannot format')
-            elif formatted == unformatted:
-                print('Nothing to do')
+            if not errs:
+                formatted = outs.decode()
+
+                if not formatted:
+                    sublime.status_message('Scalafmt: syntax errors, cannot format')
+                elif formatted == unformatted:
+                    print('Nothing to do')
+                else:
+                    self.view.replace(
+                        edit,
+                        region,
+                        formatted)
             else:
-                self.view.replace(
-                    edit,
-                    region,
-                    formatted)
+              print(errs.decode())
+
 
     def _is_nailgun_running(self):
         try:

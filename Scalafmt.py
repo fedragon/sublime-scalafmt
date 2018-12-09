@@ -24,6 +24,9 @@ class ScalafmtFormatFileCommand(sublime_plugin.TextCommand):
             else:
                 print('Nailgun is up and running')
 
+            if os.environ.has_key('TERM') == False:
+                os.environ['TERM'] = 'xterm'
+
             print('About to format ' + full_path)
             subprocess.call(['ng', 'ng-alias', 'scalafmt', 'org.scalafmt.cli.Cli'])
 

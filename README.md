@@ -41,4 +41,4 @@ This package uses (and creates, if missing) `~/.scalafmt.conf`: this file can be
 
 ## Caveats
 
-Early stages of development, only tested on OSX El Capitan / macOS Sierra.
+Only developed and tested on macOS.

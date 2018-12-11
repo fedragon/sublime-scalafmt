@@ -24,7 +24,7 @@ class ScalafmtFormatFileCommand(sublime_plugin.TextCommand):
             else:
                 print('Nailgun is up and running')
 
-            if os.environ.has_key('TERM') == False:
+            if 'TERM' not in os.environ:
                 os.environ['TERM'] = 'xterm'
 
             print('About to format ' + full_path)

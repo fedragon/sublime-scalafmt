@@ -59,7 +59,7 @@ class ScalafmtFormatFileCommand(sublime_plugin.TextCommand):
 
             outs, errs = p.communicate(unformatted.encode('utf-8'))
 
-            if not errs:
+            if p.returncode == 0:
                 formatted = outs.decode()
 
                 if not formatted:
@@ -72,6 +72,7 @@ class ScalafmtFormatFileCommand(sublime_plugin.TextCommand):
                         region,
                         formatted)
             else:
+                logger.info('Return code: {}'.format(p.returncode))
                 logger.info(errs.decode())
 
     def _is_nailgun_running(self):
